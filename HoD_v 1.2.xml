@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="director.xsl" type="text/xsl" ?>
+<director name="template" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="director.xsd">
+  <documentation>
+    <author name="XXXL and Lynx_SVD"/>
+    <content reference="HoD_Add_St" name="HoD_Add_St" description="HoD_Add_St"/>
+    <version number="1.0" date="22.09.2017" status="published"/>
+  </documentation>
+  <cues> 
+    <cue name="AddSt"> 
+      <timing> 
+        <time exact="2s"/> 
+      </timing> 
+      <action> 
+        <do_all> 
+          <set_value name="AO" exact="0"/> 
+        </do_all> 
+      </action> 
+      <cues> 
+        <cue name="AddSt1"> 
+          <condition> 
+            <check_all> 
+              <cue_is_complete cue="AddSt"/> 
+              <check_value value="{value@AO}" exact="0"/> 
+            </check_all> 
+          </condition> 
+          <timing> 
+            <time exact="5s"/> 
+          </timing> 
+          <action> 
+            <do_all> 
+			  <find_station typename="SS_FAC_SVD_SHIP" name="AO1" multiple="1" max="1"> 
+                <sector x="0" y="12"/> 
+              </find_station> 
+              <add_products object="AO1"> 
+                <ware exact="1" typename="SS_FAC_TR_SVD2"/>
+				<ware exact="1" typename="SS_FAC_TR_SVD1"/>
+				<ware exact="1" typename="SS_FAC_TR_REPAIR"/>
+              </add_products>
+			  <create_station name="AO2" race="terran" typename="SS_FAC_TR_REPAIR">
+                  <position x="40km" y="40km" z="40km"/>
+                  <sector x="13" y="2"></sector>
+                  <equipment loadout="default"/>
+              </create_station>
+            </do_all> 
+          </action> 
+        </cue> 
+      </cues> 
+    </cue> 
+  </cues> 
+</director>

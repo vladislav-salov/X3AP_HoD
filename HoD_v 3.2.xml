@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="director.xsl" type="text/xsl" ?>
+<director name="template" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="director.xsd">
+  <documentation>
+    <author name="Lynx_SVD"/>
+    <content reference="HoD" name="HoD" description="HoD"/>
+    <version number="3.2" date="07.07.2018" status="testing"/>
+  </documentation>
+  <cues> 
+    <cue name="HoD_RespawnKH">
+	  <timing>
+        <time exact="120m"/>
+      </timing>
+      <action>
+	   <do_all>
+	   <find_sector name="HoD_RespawnKH.KhaakUnknown" x="6" y="13"/>
+			  <find_station name="HoD_RespawnKH.KhaakSt" typename="SS_DOCK_K_EQUIP">
+                <sector sector="HoD_RespawnKH.KhaakUnknown"/>
+              </find_station>
+			  <add_tradables object="HoD_RespawnKH.KhaakSt">
+			                            <ware typename="SS_LASER_KH_ALPHA" min="2"/>
+                                        <ware typename="SS_LASER_KH_BETA" min="2"/>
+                                        <ware typename="SS_LASER_KH_GAMMA" min="1"/>
+                                        <ware typename="SS_SHIELD_A" min="2" max="26"/>
+                                        <ware typename="SS_SHIELD_B " min="2" max="10"/>
+                                        <ware typename="SS_SHIELD_C" min="2" max="6"/>
+                                        <ware typename="SS_SHIELD_D " min="2" max="4"/>
+                                        <ware typename="SS_SHIELD_E" min="1" max="2"/>
+										<ware typename="SS_SHIELD_F" min="1" max="2"/>
+                                        <ware typename="SS_MISSILE_1" min="2" max="82"/>
+                                        <ware typename="SS_MISSILE_2" min="2" max="34"/>
+                                        <ware typename="SS_MISSILE_3" min="2" max="12"/>
+                                        <ware typename="SS_WARE_TECH277" min="1"/>
+                                        <ware typename="SS_WARE_TECH251" min="5000"/>
+                                        <ware typename="SS_WARE_TECH213" min="50"/>
+                                        <ware typename="SS_WARE_TECH246" min="50"/>
+                                        <ware typename="SS_WARE_TECH231" min="1"/>
+										<ware typename="SS_WARE_TECH242" min="1"/>
+                                        <ware typename="SS_WARE_BOOST" min="1"/>
+                                        <ware typename="SS_WARE_SCANNER2" min="1"/>
+										<ware typename="SS_WARE_SCANNER3" min="1"/>
+										<ware typename="SS_WARE_SW_EXPLORE_1" min="1"/>
+										<ware typename="SS_WARE_BEAMING" min="1"/>
+										<ware typename="SS_WARE_WARPING" min="1"/>
+                                        <ware typename="SS_WARE_SW_NAV_1" min="1"/>
+                                        <ware typename="SS_WARE_SW_FIGHT_1" min="1"/>
+                                        <ware typename="SS_WARE_SW_FIGHT_2" min="1"/>
+                                        <ware typename="SS_WARE_SW_PATROL_1" min="1"/>
+              </add_tradables>
+			  <reset_cue cue="HoD_RespawnKH_RESET"/>
+	   </do_all>
+      </action>
+    </cue>
+	<cue name="HoD_RespawnKH_RESET">
+	<condition>
+           <cue_is_complete cue="HoD_RespawnKH"/>
+    </condition>
+      <action>
+           <reset_cue cue="HoD_RespawnKH"/>
+      </action>
+    </cue>
+  </cues> 
+</director>

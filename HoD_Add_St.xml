@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="director.xsl" type="text/xsl" ?>
+<director name="template" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="director.xsd">
+  <documentation>
+    <author name="XXXL and Lynx_SVD"/>
+    <content reference="HoD_Add_St" name="HoD_Add_St" description="HoD_Add_St"/>
+    <version number="1.0" date="22.09.2017" status="published"/>
+  </documentation>
+  <cues> 
+    <cue name="AddSt"> 
+      <timing> 
+        <time exact="2s"/> 
+      </timing> 
+      <action> 
+        <do_all> 
+          <set_value name="AO" exact="0"/> 
+        </do_all> 
+      </action> 
+      <cues> 
+        <cue name="AddSt1"> 
+          <condition> 
+            <check_all> 
+              <cue_is_complete cue="AddSt"/> 
+              <check_value value="{value@AO}" exact="0"/> 
+            </check_all> 
+          </condition> 
+          <timing> 
+            <time exact="5s"/> 
+          </timing> 
+          <action> 
+            <do_all> 
+              <find_station typename="SS_FAC_P_SHIP" race="paranid" name="AO1" multiple="1" max="1"> 
+                <sector x="1" y="6"/> 
+              </find_station> 
+              <add_products object="AO1"> 
+                <ware exact="1" typename="SS_FAC_CLOAK"/> 
+              </add_products>
+			  <find_station typename="SS_FAC_P_SHIP_BIG" race="paranid" name="AO2" multiple="1" max="1"> 
+                <sector x="10" y="15"/> 
+              </find_station> 
+              <add_products object="AO2"> 
+                <ware exact="1" typename="SS_FAC_CLOAK"/> 
+              </add_products>
+			  <find_station typename="SS_FAC_S_SHIP" race="split" name="AO3" multiple="1" max="1"> 
+                <sector x="7" y="2"/> 
+              </find_station> 
+              <add_products object="AO3"> 
+                <ware exact="1" typename="SS_FAC_S_SF_FARM"/> 
+              </add_products>
+			  <find_station typename="SS_FAC_S_SHIP_BIG" race="split" name="AO4" multiple="1" max="1"> 
+                <sector x="20" y="5"/> 
+              </find_station> 
+              <add_products object="AO4"> 
+                <ware exact="1" typename="SS_FAC_S_SF_FARM"/> 
+              </add_products>
+            </do_all> 
+          </action> 
+        </cue> 
+      </cues> 
+    </cue> 
+  </cues> 
+</director>
